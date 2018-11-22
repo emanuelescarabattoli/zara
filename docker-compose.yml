@@ -1,0 +1,26 @@
+version: '2.2'
+
+services:
+  db:
+  
+    image: postgres:latest
+    environment:
+    - POSTGRES_DB=zara
+    - POSTGRES_USER=zara
+    - POSTGRES_PASSWORD=zara
+    ports:
+      - "5454:5432"
+
+  web:
+    build: .
+    command: python /code/zara/manage.py migrate --noinput
+    command: python /code/zara/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8080:8000
+    environment:
+      - SECRET_KEY=changemeinprod
+      - DATABASE_URL=postgres://zara:zara@db:5432/zara
+    depends_on:
+      - db
