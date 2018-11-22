@@ -79,6 +79,70 @@ class TotalRowMutation(DjangoModelFormMutation):
         form_class = TotalRowForm
 
 
+class CounterDeleteMutation(graphene.Mutation):
+    """
+    a mutation to delete a couner
+    """
+
+    class Arguments:
+        pk = graphene.Int()
+
+    success = graphene.Boolean()
+
+    def mutate(self, info, pk):
+
+        Counter.objects.filter(id=pk).delete()
+        return CounterDeleteMutation(success=True)
+
+
+class CounterRowDeleteMutation(graphene.Mutation):
+    """
+    a mutation to delete a couner row
+    """
+
+    class Arguments:
+        pk = graphene.Int()
+
+    success = graphene.Boolean()
+
+    def mutate(self, info, pk):
+
+        CounterRow.objects.filter(id=pk).delete()
+        return CounterRowDeleteMutation(success=True)
+
+
+class TotalDeleteMutation(graphene.Mutation):
+    """
+    a mutation to delete a total
+    """
+
+    class Arguments:
+        pk = graphene.Int()
+
+    success = graphene.Boolean()
+
+    def mutate(self, info, pk):
+
+        Total.objects.filter(id=pk).delete()
+        return TotalDeleteMutation(success=True)
+
+
+class TotalRowDeleteMutation(graphene.Mutation):
+    """
+    a mutation to delete a total row
+    """
+
+    class Arguments:
+        pk = graphene.Int()
+
+    success = graphene.Boolean()
+
+    def mutate(self, info, pk):
+
+        TotalRow.objects.filter(id=pk).delete()
+        return TotalRowDeleteMutation(success=True)
+
+
 class Query(graphene.ObjectType):
     """
     the grapql query object
@@ -125,10 +189,16 @@ class Mutations(graphene.ObjectType):
     """
     the mutations graphql object
     """
-    mutations_total = TotalMutation.Field()
-    mutations_total_row = TotalRowMutation.Field()
-    mutations_counter = CounterMutation.Field()
-    mutations_counter_row = CounterRowMutation.Field()
+
+    mutation_total = TotalMutation.Field()
+    mutation_total_row = TotalRowMutation.Field()
+    mutation_counter = CounterMutation.Field()
+    mutation_counter_row = CounterRowMutation.Field()
+
+    mutation_delete_counter = CounterDeleteMutation.Field()
+    mutation_delete_counter_row = CounterRowDeleteMutation.Field()
+    mutation_delete_total = TotalDeleteMutation.Field()
+    mutation_delete_total_row = TotalRowDeleteMutation.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutations)
