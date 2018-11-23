@@ -7,6 +7,14 @@ from .forms import CounterForm, CounterRowForm, TotalForm, TotalRowForm
 from .models import Counter, CounterRow, Total, TotalRow
 
 
+class MeObject(graphene.ObjectType):
+    """
+    logged user info
+    """
+
+    username = graphene.String()
+
+
 class CounterType(DjangoObjectType):
     """
     counter graphql object
@@ -148,11 +156,21 @@ class Query(graphene.ObjectType):
     the grapql query object
     """
 
+    me = graphene.Field(MeObject)
+
     detail_total = graphene.Field(TotalType, id=graphene.Int())
     detail_counter = graphene.Field(TotalType, id=graphene.Int())
 
     list_total = graphene.List(TotalType)
     list_counter = graphene.List(CounterType)
+
+    def resolve_me(self, info, **kwargs):
+        """
+        me resolver
+        """
+        if info.context.user.is_authenticated:
+            return MeObject(username=info.context.user.username)
+        return None
 
     def resolve_detail_total(self, info, **kwargs):
         """

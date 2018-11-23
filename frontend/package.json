@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.1.22",
+    "apollo-link": "^1.2.4",
+    "graphql": "^14.0.2",
     "react": "^16.6.3",
+    "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
   "scripts": {
@@ -17,9 +22,14 @@
     "extends": "react-app"
   },
   "browserslist": [
-    ">0.2%",
+    "> .01%",
     "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "last 3 Chrome versions",
+    "last 3 Firefox versions",
+    "last 3 Safari versions",
+    "last 2 Edge versions",
+    "last 1 version",
+    "Firefox ESR",
+    "not ie <= 11"
   ]
 }

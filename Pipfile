@@ -8,6 +8,7 @@ django = "*"
 graphene-django = "*"
 django-environ = "*"
 "psycopg2-binary" = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 django-admin = "*"
