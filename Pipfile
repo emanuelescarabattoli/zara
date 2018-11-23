@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 graphene-django = "*"
+django-environ = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 django-admin = "*"
