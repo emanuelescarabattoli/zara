@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
 html,
 body {
@@ -7,90 +7,160 @@ body {
   font-family: "Open Sans";
   background-color: #2f323a;
   color: #b1bbdb;
-  width: 100%;
-  height: 100%;
 }
 
 #root {
   margin: 0px;
   padding: 0px;
-  width: 100%;
-  height: 100%;
 }
 
 .sidebar {
-    margin: 0px;
-    padding: 20px;
-    width: 180px;
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    background-color: #f0f0f0;
-    color: #2f323a;
+  margin: 0px;
+  padding: 20px;
+  width: 180px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #f0f0f0;
+  color: #2f323a;
 }
 
 .sidebar .logo {
-    margin: 0px;
-    padding: 0px 0px;
-    font-size: 1.2em;
-    font-weight: bold;
-    display: block;
+  margin: 0px;
+  padding: 0px 0px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
 }
 
 .logo .icon {
-    margin: 0px 10px 0px 0px;
-    padding: 0px;
-    color: #8233cc;
+  margin: 0px 10px 0px 0px;
+  padding: 0px;
+  color: #8233cc;
 }
 
 .content {
-    margin: 0px 0px 0px 220px;
-    padding: 0px;
+  margin: 0px 0px 0px 220px;
+  padding: 0px;
 }
 
 .main {
-    margin: 0px;
-    padding: 0px 20px 20px 20px;
+  margin: 0px;
+  padding: 0px 30px 120px 30px;
 }
 
 .title {
-    margin: 0px;
-    padding: 20px;
-    font-weight: 600;
-    display: block;
-    color: #c6cfeb;
-    font-size: 1.2em;
+  margin: 0px;
+  padding: 20px 30px 30px 30px;
+  font-weight: 600;
+  display: block;
+  color: #c6cfeb;
+  font-size: 1.2em;
 }
 
 .fa-spacing {
-    width: 1.6em;
-    text-align: left;
+  width: 1.6em;
+  text-align: left;
 }
 
 ul.menu {
-    margin: 20px 0px;
-    padding: 0px;
-    list-style-type: none;
+  margin: 30px 0px;
+  padding: 0px;
+  list-style-type: none;
 }
 
 ul.menu li {
-    margin: 20px 0px;
-    padding: 0px
+  margin: 30px 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+ul.menu li:hover {
+  color: #8233cc;
 }
 
 .menu-buttons {
-    margin: 20px 0px 0px 0px;
-    padding: 0px;
+  margin: 30px 0px 0px 0px;
+  padding: 0px;
 }
 
-.menu-buttons button{
-    margin: 0px;
-    padding: 10px 20px;
-    outline: none;
-    border: none;
-    border-radius: 20px;
-    background-color: #8233cc;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
-    color: #fafafa;
+.menu-buttons button {
+  margin: 0px;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  background-color: #8233cc;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  color: #fafafa;
+  cursor: pointer;
+}
+
+.card {
+  margin: 0px;
+  padding: 0px;
+  border-radius: 4px;
+  border: solid 1px #444853;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.card-body > table {
+  margin: 0px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.card-body > table tr td:first-child a {
+  border-bottom: dotted 1px #aaaaaa;
+  cursor: pointer;
+}
+
+.card-body > table tr td:last-child {
+  text-align: right;
+}
+
+.card-body > table tr td:last-child a{
+  color: #a362e0;
+  cursor: pointer;
+}
+
+.card-body > table thead th {
+  margin: 0px;
+  padding: 12px 20px;
+  border: none;
+  border-bottom: solid 1px #444853;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.card-body > table tbody tr td {
+  margin: 0px;
+  padding: 15px 20px;
+  border: none;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.card-body > table tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.plus-button {
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  right: 50px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  background-color: #8233cc;
+  color: #fafafa;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }

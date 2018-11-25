@@ -13,22 +13,22 @@ const Page = props => {
         </div>
         <ul className="menu">
           <li>
-            <i className="fas fa-home fa-spacing" />
+          <i class="fas fa-chart-area fa-spacing"></i>
             Dashboard
           </li>
           <li>
-            <i className="fas fa-archive fa-spacing" />
-            Archive
+            <i className="fas fa-cube fa-spacing" />
+            Counters
           </li>
           <li>
-            <i className="fas fa-cog fa-spacing" />
-            Settings
+            <i className="fas fa-cubes fa-spacing" />
+            Totals
           </li>
         </ul>
       </div>
       <div className="content">
-        <span className="title">Dashboard</span>
-        <div className="main">a</div>
+        <span className="title">{props.title}</span>
+        <div className="main">{props.children}</div>
       </div>
     </div>
   );

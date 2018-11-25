@@ -8,6 +8,9 @@ class Counter(models.Model):
 
     title = models.CharField(max_length=256)
 
+    def __str__(self):
+        return self.title
+
 
 class CounterRow(models.Model):
     """
@@ -20,6 +23,9 @@ class CounterRow(models.Model):
     period = models.CharField(max_length=256)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
 
+    def __str__(self):
+        return self.description
+
 
 class Total(models.Model):
     """
@@ -27,6 +33,9 @@ class Total(models.Model):
     """
 
     title = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.title
 
 
 class TotalRow(models.Model):

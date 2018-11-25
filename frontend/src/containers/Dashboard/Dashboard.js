@@ -6,7 +6,7 @@ import "./Dashboard.css";
 
 class Dashboard extends Component {
   render() {
-    return <Page />;
+    return <Page title="Dashboard"/>;
   }
 }
 
