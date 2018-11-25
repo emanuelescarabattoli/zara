@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Open Sans";
+  background-color: #2f323a;
+  color: #b1bbdb;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+    margin: 0px;
+    padding: 20px;
+    width: 180px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #f0f0f0;
+    color: #2f323a;
+}
+
+.sidebar .logo {
+    margin: 0px;
+    padding: 0px 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+}
+
+.logo .icon {
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    color: #8233cc;
+}
+
+.content {
+    margin: 0px 0px 0px 220px;
+    padding: 0px;
+}
+
+.main {
+    margin: 0px;
+    padding: 0px 20px 20px 20px;
+}
+
+.title {
+    margin: 0px;
+    padding: 20px;
+    font-weight: 600;
+    display: block;
+    color: #c6cfeb;
+    font-size: 1.2em;
+}
+
+.fa-spacing {
+    width: 1.6em;
+    text-align: left;
+}
+
+ul.menu {
+    margin: 20px 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+ul.menu li {
+    margin: 20px 0px;
+    padding: 0px
+}
+
+.menu-buttons {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+}
+
+.menu-buttons button{
+    margin: 0px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color: #8233cc;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+    color: #fafafa;
+}

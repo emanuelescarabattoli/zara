@@ -36,3 +36,23 @@ class TotalRow(models.Model):
 
     total = models.ForeignKey(Total, on_delete=models.CASCADE)
     counter = models.ForeignKey(Counter, on_delete=models.DO_NOTHING)
+
+
+class CounterHistory(models.Model):
+    """
+    a histyory of a counter
+    """
+
+    counter = models.ForeignKey(Counter, on_delete=models.DO_NOTHING)
+    date = models.DateField()
+    amount = models.DecimalField(max_digits=12, decimal_places=2)
+
+
+class TotalHistory(models.Model):
+    """
+    a histyory of a total
+    """
+
+    totlal = models.ForeignKey(Total, on_delete=models.DO_NOTHING)
+    date = models.DateField()
+    amount = models.DecimalField(max_digits=12, decimal_places=2)
