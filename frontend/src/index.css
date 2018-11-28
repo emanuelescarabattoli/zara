@@ -105,27 +105,32 @@ ul.menu li:hover {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-.card-body > table {
+.card > .card-body {
+  margin: 0px;
+  padding: 10px 20px;
+}
+
+.card > table {
   margin: 0px;
   width: 100%;
   border-collapse: collapse;
 }
 
-.card-body > table tr td:first-child a {
+.card > table tr td:first-child a {
   border-bottom: dotted 1px #aaaaaa;
   cursor: pointer;
 }
 
-.card-body > table tr td:last-child {
+.card > table tr td:last-child {
   text-align: right;
 }
 
-.card-body > table tr td:last-child a {
+.card > table tr td:last-child a {
   color: #a362e0;
   cursor: pointer;
 }
 
-.card-body > table thead th {
+.card > table thead th {
   margin: 0px;
   padding: 12px 20px;
   border: none;
@@ -134,7 +139,7 @@ ul.menu li:hover {
   text-align: left;
 }
 
-.card-body > table tbody tr td {
+.card > table tbody tr td {
   margin: 0px;
   padding: 15px 20px;
   border: none;
@@ -142,7 +147,7 @@ ul.menu li:hover {
   text-align: left;
 }
 
-.card-body > table tbody tr:nth-child(even) {
+.card > table tbody tr:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
@@ -211,4 +216,47 @@ ul.menu li:hover {
 
 .button-icon.green {
   color: #00aa00 !important;
+}
+
+.form-group {
+  margin: 0px 0px 15px 0px;
+  padding: 0px;
+}
+
+label {
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="password"],
+textarea {
+  margin: 0px;
+  padding: 6px;
+  display: block;
+  width: calc(100% - 12px);
+  border: solid 1px #444853;
+  border-radius: 3px;
+  background-color: transparent;
+  color: #aaaaaa;
+}
+
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="date"]:focus,
+input[type="date"]:hover,
+input[type="time"]:focus,
+input[type="time"]:hover,
+input[type="number"]:focus,
+input[type="number"]:hover,
+input[type="password"]:focus,
+input[type="password"]:hover,
+textarea:hover,
+textarea:focus {
+  border: solid 1px #8233cc;
 }

@@ -177,7 +177,7 @@ class Query(graphene.ObjectType):
     me = graphene.Field(MeObject)
 
     detail_total = graphene.Field(TotalType, id=graphene.Int())
-    detail_counter = graphene.Field(TotalType, id=graphene.Int())
+    detail_counter = graphene.Field(CounterType, id=graphene.Int())
 
     list_total = graphene.List(TotalType)
     list_counter = graphene.List(CounterType)

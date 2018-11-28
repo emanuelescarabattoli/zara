@@ -1,12 +1,11 @@
 import React from "react";
 
 import { Card, CardBody } from "../../components/Card/Card";
-import Delete from "../../components/Delete/Delete"
+import Delete from "../../components/Delete/Delete";
 
 const List = props => {
   return (
     <Card>
-      <CardBody>
         <table>
           <thead>
             <th>Id</th>
@@ -19,13 +18,14 @@ const List = props => {
                 <tr>
                   <td width="5%">{item.id}</td>
                   <td>{item.title}</td>
-                  <td><Delete onClick={() => props.onDelete(item.id)} /></td>
+                  <td>
+                    <Delete onClick={() => props.onDelete(item.id)} />
+                  </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-      </CardBody>
     </Card>
   );
 };
