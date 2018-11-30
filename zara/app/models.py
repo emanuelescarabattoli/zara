@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Counter(models.Model):
@@ -6,6 +7,7 @@ class Counter(models.Model):
     a counter with a title and rows as children
     """
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
 
     def __str__(self):
@@ -32,6 +34,7 @@ class Total(models.Model):
     a sum of counters
     """
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=256)
 
     def __str__(self):

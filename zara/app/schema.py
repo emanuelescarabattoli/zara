@@ -77,6 +77,17 @@ class CounterMutation(DjangoModelFormMutation):
     class Meta:
         form_class = CounterForm
 
+    @classmethod
+    def perform_mutate(cls, form, info):
+        """
+        add user before saving
+        """
+        obj = form.save(commit=False)
+        obj.user = info.context.user
+        obj.save()
+        kwargs = {cls._meta.return_field_name: obj}
+        return cls(errors=[], **kwargs)
+
 
 class CounterRowMutation(DjangoModelFormMutation):
     """
@@ -94,6 +105,17 @@ class TotalMutation(DjangoModelFormMutation):
 
     class Meta:
         form_class = TotalForm
+
+    @classmethod
+    def perform_mutate(cls, form, info):
+        """
+        add user before saving
+        """
+        obj = form.save(commit=False)
+        obj.user = info.context.user
+        obj.save()
+        kwargs = {cls._meta.return_field_name: obj}
+        return cls(errors=[], **kwargs)
 
 
 class TotalRowMutation(DjangoModelFormMutation):
@@ -214,13 +236,13 @@ class Query(graphene.ObjectType):
         """
         resolve the list of totals
         """
-        return Total.objects.all()
+        return Total.objects.filter(user=info.context.user)
 
     def resolve_list_counter(self, info, **kwargs):
         """
         resolve the list of couters
         """
-        return Counter.objects.all()
+        return Counter.objects.filter(user=info.context.user)
 
     def resolve_list_counter_history(self, info, **kwargs):
         """
