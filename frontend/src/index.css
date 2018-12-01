@@ -110,14 +110,20 @@ ul.menu li:hover {
   padding: 10px 20px;
 }
 
+.card > .card-header {
+  margin: 0px;
+  padding: 10px 20px;
+  border-bottom: solid 1px #444853;
+}
+
 .card > table {
   margin: 0px;
   width: 100%;
   border-collapse: collapse;
 }
 
-.card > table tr td:first-child a {
-  border-bottom: dotted 1px #aaaaaa;
+.card > table tr td:nth-child(2) a {
+  border-bottom: dotted 1px #b1bbdb;
   cursor: pointer;
 }
 
@@ -242,7 +248,7 @@ textarea {
   width: calc(100% - 12px);
   border: solid 1px #444853;
   border-radius: 3px;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.05);
   color: #aaaaaa;
 }
 
@@ -259,4 +265,97 @@ input[type="password"]:hover,
 textarea:hover,
 textarea:focus {
   border: solid 1px #8233cc;
+}
+
+.grid {
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.grid .col-1 {
+  grid-column: span 1;
+}
+
+.grid .col-2 {
+  grid-column: span 2;
+}
+
+.grid .col-3 {
+  grid-column: span 3;
+}
+
+.grid .col-4 {
+  grid-column: span 4;
+}
+
+.grid .col-5 {
+  grid-column: span 5;
+}
+
+.grid .col-6 {
+  grid-column: span 6;
+}
+
+.grid .col-7 {
+  grid-column: span 7;
+}
+
+.grid .col-8 {
+  grid-column: span 8;
+}
+
+.grid .col-9 {
+  grid-column: span 9;
+}
+
+.grid .col-10 {
+  grid-column: span 10;
+}
+
+.grid .col-11 {
+  grid-column: span 12;
+}
+
+.grid .col-12 {
+  grid-column: span 12;
+}
+
+@media only screen and (max-width: 1024px) {
+  .grid {
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-gap: 0px;
+    grid-column-gap: 0px;
+    grid-row-gap: 40px;
+    grid-template-columns: 1fr;
+  }
+
+  .grid .col-1,
+  .grid .col-2,
+  .grid .col-3,
+  .grid .col-4,
+  .grid .col-5,
+  .grid .col-6,
+  .grid .col-7,
+  .grid .col-8,
+  .grid .col-9,
+  .grid .col-10,
+  .grid .col-11,
+  .grid .col-12 {
+    grid-column: span 1;
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+.title-bar-title {
+  margin: 0px;
+  padding: 0px;
+  font-weight: 600;
 }
