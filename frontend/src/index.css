@@ -91,10 +91,12 @@ ul.menu li:hover {
   outline: none;
   border: none;
   border-radius: 20px;
-  background-color: #8233cc;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
-  color: #fafafa;
   cursor: pointer;
+}
+
+.menu-buttons button:active {
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .card {
@@ -107,12 +109,12 @@ ul.menu li:hover {
 
 .card > .card-body {
   margin: 0px;
-  padding: 10px 20px;
+  padding: 1px 20px;
 }
 
 .card > .card-header {
   margin: 0px;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-bottom: solid 1px #444853;
 }
 
@@ -170,10 +172,12 @@ ul.menu li:hover {
   height: 50px;
   border: none;
   border-radius: 25px;
-  background-color: #8233cc;
-  color: #fafafa;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+}
+
+.plus-button:active {
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
 .delete {
@@ -358,4 +362,22 @@ textarea:focus {
   margin: 0px;
   padding: 0px;
   font-weight: 600;
+}
+
+button {
+  margin: 0px;
+  padding: 7px 18px;
+  border: none;
+  background-color: #8233cc;
+  border-radius: 20px;
+  color: #fafafa;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4)
+}
+
+button:hover {
+  background-color: #a362e0;
+}
+
+button:active {
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4)
 }
