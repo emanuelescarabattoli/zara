@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Page from "../../components/Page/Page";
 import { Card, CardBody, CardHeader } from "../../components/Card/Card";
+import TwoSections from "../../components/TwoSections/TwoSections";
 
 import "./Demo.css";
 
@@ -191,6 +192,11 @@ class Counters extends Component {
         <button className="button button-plus">
           <i className="fas fa-plus" />
         </button>
+        <div className="modal">
+          <div>
+            <TwoSections title="Add a counter row"><i class="fas fa-times" /></TwoSections>
+          </div>
+        </div>
       </Page>
     );
   }
