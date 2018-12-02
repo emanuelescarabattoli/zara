@@ -18,17 +18,15 @@ class Counter extends Component {
 
     this.state = {
       id: 0,
-      detail: {
-        title: ""
-      },
+      detail: {},
       errors: []
     };
   }
 
   componentWillReceiveProps(props) {
-    if (props.query.detailCouner) {
+    if (props.query.detailCounter) {
       this.setState({ id: props.match.params.id });
-      this.setState({ detail: props.query.detailCouner });
+      this.setState({ detail: props.query.detailCounter });
     }
   }
 
@@ -37,6 +35,7 @@ class Counter extends Component {
   };
 
   onSave = () => {
+    console.log(this.state);
     if (this.state.id) {
       return this.props
         .update({ variables: { id: this.state.id, title: this.state.detail.title } })
@@ -61,7 +60,13 @@ class Counter extends Component {
       content = "Loading...";
     } else {
       content = (
-        <Detail detail={this.state.detail} onChange={this.onChange} onSave={this.onSave} errors={this.state.errors} />
+        <Detail
+          detail={this.state.detail}
+          onChange={this.onChange}
+          onSave={this.onSave}
+          errors={this.state.errors}
+          list={this.state.detail.counterrowSet}
+        />
       );
     }
 
@@ -74,7 +79,8 @@ export default compose(
     name: "query",
     options: props => ({
       notifyOnNetworkStatusChange: true,
-      variables: { id: props.match.params.id }
+      variables: { id: props.match.params.id },
+      fetchPolicy: "network-only"
     })
   }),
   graphql(MUTATION_CREATE_COUNTER, {

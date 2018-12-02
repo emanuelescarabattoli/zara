@@ -20,7 +20,15 @@ export const MUTATION_DELETE_COUNTER = gql`
 export const QUERY_DETAIL_COUNTER = gql`
   query($id: Int) {
     detailCounter(id: $id) {
+      id
       title
+      counterrowSet {
+        id
+        date
+        description
+        period
+        amount
+      }
     }
   }
 `;
@@ -38,7 +46,7 @@ export const MUTATION_CREATE_COUNTER = gql`
 `;
 
 export const MUTATION_UPDATE_COUNTER = gql`
-  mutation updateCounter($id: Int!, $title: String!) {
+  mutation updateCounter($id: ID!, $title: String!) {
     mutationCounter(input: { id: $id, title: $title }) {
       clientMutationId
       errors {

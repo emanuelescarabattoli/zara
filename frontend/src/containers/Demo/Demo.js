@@ -188,7 +188,7 @@ class Counters extends Component {
             </tbody>
           </table>
         </Card>
-        <button className="button plus-button">
+        <button className="button button-plus">
           <i className="fas fa-plus" />
         </button>
       </Page>

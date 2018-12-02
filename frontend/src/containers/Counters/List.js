@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { Card, CardHeader } from "../../components/Card/Card";
 import Delete from "../../components/Delete/Delete";
@@ -24,7 +25,7 @@ const List = props => {
                 <tr key={item.id}>
                   <td width="5%">{item.id}</td>
                   <td>
-                    <a>{item.title}</a>
+                    <Link to={"/counter/" + item.id}>{item.title}</Link>
                   </td>
                   <td>
                     <Delete onClick={() => props.onDelete(item.id)} />

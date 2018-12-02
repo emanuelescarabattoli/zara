@@ -117,7 +117,7 @@ ul.menu li a:hover {
 
 .card > .card-body {
   margin: 0px;
-  padding: 1px 20px;
+  padding: 10px 20px;
 }
 
 .card > .card-header {
@@ -125,6 +125,13 @@ ul.menu li a:hover {
   padding: 15px 20px;
   border-bottom: solid 1px #444853;
 }
+.card > .card-section {
+  margin: 0px;
+  padding: 15px 20px;
+  border-top: solid 1px #444853;
+  border-bottom: solid 1px #444853;
+}
+
 
 .card > table {
   margin: 0px;
@@ -134,6 +141,7 @@ ul.menu li a:hover {
 
 .card > table tr td:nth-child(2) a {
   border-bottom: dotted 1px #b1bbdb;
+  color: #b1bbdb;
   cursor: pointer;
 }
 
@@ -167,7 +175,16 @@ ul.menu li a:hover {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-.plus-button {
+.card > table tfoot tr td {
+  margin: 0px;
+  padding: 15px 20px;
+  border: none;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: double 4px #444853;
+}
+
+.button-plus {
   margin: 0px;
   padding: 0px !important;
   position: fixed;
@@ -184,7 +201,7 @@ ul.menu li a:hover {
   cursor: pointer;
 }
 
-.plus-button:active {
+.button-plus:active {
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
@@ -363,7 +380,7 @@ textarea:focus {
 }
 
 .align-right {
-  text-align: right;
+  text-align: right !important;
 }
 
 .title-bar-title {
@@ -382,15 +399,19 @@ textarea:focus {
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4)
 }
 
-button:hover {
+.button:hover {
   background-color: #a362e0;
 }
 
-button:active {
+.button:active {
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4)
 }
 
 .veritical-align-center {
   display: flex;
   align-items: center;
+}
+
+.total {
+  font-weight: 600;
 }
