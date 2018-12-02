@@ -10,6 +10,7 @@ const FieldText = props => {
         value={props.value}
         onChange={e => props.onChange(e.target.value)}
       />
+      <small>{props.error && props.error.messages.join(", ")}</small>
     </div>
   );
 };

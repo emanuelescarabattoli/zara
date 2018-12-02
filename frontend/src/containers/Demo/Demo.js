@@ -11,7 +11,7 @@ class Counters extends Component {
       <Page title="Demo">
         <Card>
           <CardHeader>
-            <button>Save</button>
+            <button className="button">Save</button>
           </CardHeader>
           <table>
             <thead>
@@ -188,7 +188,7 @@ class Counters extends Component {
             </tbody>
           </table>
         </Card>
-        <button className="plus-button">
+        <button className="button plus-button">
           <i className="fas fa-plus" />
         </button>
       </Page>

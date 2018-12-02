@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Page = props => {
   return (
@@ -9,20 +10,29 @@ const Page = props => {
           Zara
         </span>
         <div className="menu-buttons">
-          <button className="button-light"><i className="fas fa-plus fa-spacing" />New counter</button>
+          <Link className="button button-light" to="/counter">
+            <i className="fas fa-plus fa-spacing" />
+            New counter
+          </Link>
         </div>
         <ul className="menu">
           <li>
-          <i class="fas fa-chart-area fa-spacing"></i>
-            Dashboard
+            <Link to="/dashboard">
+              <i class="fas fa-chart-area fa-spacing" />
+              Dashboard
+            </Link>
           </li>
           <li>
-            <i className="fas fa-cube fa-spacing" />
-            Counters
+          <Link to="/counters">
+              <i className="fas fa-cube fa-spacing" />
+              Counters
+            </Link>
           </li>
           <li>
-            <i className="fas fa-cubes fa-spacing" />
-            Totals
+            <Link to="/totals">
+              <i className="fas fa-cubes fa-spacing" />
+              Totals
+            </Link>
           </li>
         </ul>
       </div>

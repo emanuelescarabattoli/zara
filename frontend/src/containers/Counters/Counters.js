@@ -8,7 +8,7 @@ import List from "./List";
 import "./Counters.css";
 
 class Counters extends Component {
-  onDelete(id) {
+  onDelete = id => {
     this.props.delete({ variables: { pk: id } });
   }
 
@@ -18,7 +18,7 @@ class Counters extends Component {
     if (this.props.query.loading) {
       content = "Loading...";
     } else {
-      content = <List list={this.props.query.listCounter} onDelete={id => this.onDelete(id)} />;
+      content = <List list={this.props.query.listCounter} onDelete={this.onDelete} />;
     }
 
     return <Page title="Counters">{content}</Page>;

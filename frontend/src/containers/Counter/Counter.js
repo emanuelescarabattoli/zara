@@ -21,9 +21,7 @@ class Counter extends Component {
       detail: {
         title: ""
       },
-      errors: {
-        messages: []
-      }
+      errors: []
     };
   }
 
@@ -34,18 +32,27 @@ class Counter extends Component {
     }
   }
 
-  onChange(detail) {
+  onChange = detail => {
     this.setState({ detail });
-  }
+  };
 
-  onSave() {
+  onSave = () => {
     if (this.state.id) {
       return this.props
         .update({ variables: { id: this.state.id, title: this.state.detail.title } })
-        .then(response => response);
+        .then(response => this.errorOrRedirect(response));
     }
-    return this.props.create({ variables: { title: this.state.detail.title } }).then(response => response);
-  }
+    return this.props
+      .create({ variables: { title: this.state.detail.title } })
+      .then(response => this.errorOrRedirect(response));
+  };
+
+  errorOrRedirect = response => {
+    if (response.data.mutationCounter.errors.length > 0) {
+      return this.setState({ errors: response.data.mutationCounter.errors });
+    }
+    return this.props.history.push("/counters");
+  };
 
   render() {
     let content;
@@ -54,7 +61,7 @@ class Counter extends Component {
       content = "Loading...";
     } else {
       content = (
-        <Detail detail={this.state.detail} onChange={detail => this.onChange(detail)} errors={this.state.errors} />
+        <Detail detail={this.state.detail} onChange={this.onChange} onSave={this.onSave} errors={this.state.errors} />
       );
     }
 
