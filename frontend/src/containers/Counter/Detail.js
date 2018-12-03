@@ -32,7 +32,9 @@ const Detail = props => {
           </div>
         </CardBody>
         <CardSection>
-          <TwoSections title="Rows"><Button>Add</Button></TwoSections>
+          <TwoSections title="Rows">
+            <Button onClick={props.clickAdd}>Add</Button>
+          </TwoSections>
         </CardSection>
         <table>
           <thead>
@@ -44,34 +46,50 @@ const Detail = props => {
             <th />
           </thead>
           <tbody>
-            {props.list.map(item => {
-              return (
-                <tr key={item.id}>
-                  <td width="5%">{item.id}</td>
-                  <td>
-                    <Link to={"/counter/" + item.id}>{item.description}</Link>
-                  </td>
-                  <td>{item.date}</td>
-                  <td>{item.period}</td>
-                  <td className="align-right">{formatNumber(item.amount)} &euro;</td>
-                  <td>
-                    <Delete onClick={() => props.onDelete(item.id)} />
-                  </td>
-                </tr>
-              );
-            })}
+            {props.list &&
+              props.list.map(item => {
+                return (
+                  <tr key={item.id}>
+                    <td width="5%">{item.id}</td>
+                    <td>
+                      <Link to={"/counter/" + item.id}>{item.description}</Link>
+                    </td>
+                    <td>{item.date}</td>
+                    <td>{item.period}</td>
+                    <td className="align-right">{formatNumber(item.amount)} &euro;</td>
+                    <td>
+                      <Delete onClick={() => props.onDelete(item.id)} />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
           <tfoot>
             <tr>
               <td colSpan={5} className="align-right">
-                <Total list={props.list} column="amount" />
+                <Total list={props.list || []} column="amount" />
               </td>
               <td colSpan={1} />
             </tr>
           </tfoot>
         </table>
       </Card>
-      <Modal title="Add a counter row" isVisible={false}>a</Modal>
+      <Modal title="Add a counter row" isVisible={props.modalVisible} closeModal={props.closeModal}>
+        <div className="grid">
+          <div className="col-6">
+            <FieldText name="description" description="Description" />
+          </div>
+          <div className="col-2">
+            <FieldText type="date" name="date" description="Date" />
+          </div>
+          <div className="col-2">
+            <FieldText name="period" description="Period" />
+          </div>
+          <div className="col-2">
+            <FieldText name="amount" description="Amount" />
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

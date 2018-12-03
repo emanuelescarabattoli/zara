@@ -56,3 +56,23 @@ export const MUTATION_UPDATE_COUNTER = gql`
     }
   }
 `;
+
+export const MUTATION_CREATE_COUNTER_ROW = gql`
+mutation mutationCounterRow($counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Number!) {
+  mutationCounterRow(input: {counter: $counter, date: $date, description: $description, period: $period, amount: $amount}) {
+    errors {
+      messages
+    }
+  }
+}
+`;
+
+export const MUTATION_UPDATE_COUNTER_ROW = gql`
+mutation mutationCounterRow($id: ID!, $counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Number!) {
+  mutationCounterRow(input: {id: $id, counter: $counter, date: $date, description: $description, period: $period, amount: $amount}) {
+    errors {
+      messages
+    }
+  }
+}
+`;

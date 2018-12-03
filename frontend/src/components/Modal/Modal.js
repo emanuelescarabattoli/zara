@@ -1,15 +1,19 @@
 import React from "react";
 
 import TwoSections from "../TwoSections/TwoSections";
+import Button from "../Button/Button";
 
 const Modal = props => {
   return (
-    <div className="modal" hidden={!props.isVisible}>
+    <div className={props.isVisible ? "modal" : "modal hidden"}>
       <div>
         <TwoSections title={props.title}>
-          <i class="fas fa-times" />
+          <span className="pointer" onClick={props.closeModal}>
+            <i class="fas fa-times" />
+          </span>
         </TwoSections>
         <div>{props.children}</div>
+        <Button onClick={props.valudate}>Save</Button>
       </div>
     </div>
   );

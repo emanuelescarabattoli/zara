@@ -19,7 +19,10 @@ class Counter extends Component {
     this.state = {
       id: 0,
       detail: {},
-      errors: []
+      errors: [],
+      rowDetail: {},
+      rowError: {},
+      modalVisible: false
     };
   }
 
@@ -35,7 +38,6 @@ class Counter extends Component {
   };
 
   onSave = () => {
-    console.log(this.state);
     if (this.state.id) {
       return this.props
         .update({ variables: { id: this.state.id, title: this.state.detail.title } })
@@ -53,6 +55,9 @@ class Counter extends Component {
     return this.props.history.push("/counters");
   };
 
+  clickAdd = () => this.setState({ modalVisible: true });
+  closeModal = () => this.setState({ modalVisible: false });
+
   render() {
     let content;
 
@@ -66,6 +71,9 @@ class Counter extends Component {
           onSave={this.onSave}
           errors={this.state.errors}
           list={this.state.detail.counterrowSet}
+          clickAdd={this.clickAdd}
+          closeModal={this.closeModal}
+          modalVisible={this.state.modalVisible}
         />
       );
     }
