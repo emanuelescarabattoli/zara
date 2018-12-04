@@ -8,12 +8,12 @@ const Modal = props => {
     <div className={props.isVisible ? "modal" : "modal hidden"}>
       <div>
         <TwoSections title={props.title}>
-          <span className="pointer" onClick={props.closeModal}>
+          <span className="pointer" onClick={props.onCloseModal}>
             <i class="fas fa-times" />
           </span>
         </TwoSections>
         <div>{props.children}</div>
-        <Button onClick={props.valudate}>Save</Button>
+        <Button onClick={props.onValidate}>Save</Button>
       </div>
     </div>
   );

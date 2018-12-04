@@ -74,19 +74,53 @@ const Detail = props => {
           </tfoot>
         </table>
       </Card>
-      <Modal title="Add a counter row" isVisible={props.modalVisible} closeModal={props.closeModal}>
+      <Modal
+        title="Add a counter row"
+        isVisible={props.modalVisible}
+        onCloseModal={props.closeModal}
+        onValidate={props.onSaveRow}
+      >
         <div className="grid">
           <div className="col-6">
-            <FieldText name="description" description="Description" />
+            <FieldText
+              name="description"
+              description="Description"
+              value={props.rowDetail.description}
+              helpText="Description of counter row"
+              onChange={value => props.onChangeRow({ ...props.rowDetail, description: value })}
+              error={props.rowErrors.find(error => error.field == "description")}
+            />
           </div>
           <div className="col-2">
-            <FieldText type="date" name="date" description="Date" />
+            <FieldText
+              type="date"
+              name="date"
+              description="Date"
+              value={props.rowDetail.date}
+              helpText="Date of counter row"
+              onChange={value => props.onChangeRow({ ...props.rowDetail, date: value })}
+              error={props.rowErrors.find(error => error.field == "date")}
+            />
           </div>
           <div className="col-2">
-            <FieldText name="period" description="Period" />
+            <FieldText
+              name="period"
+              description="Period"
+              value={props.rowDetail.period}
+              helpText="Period of counter row"
+              onChange={value => props.onChangeRow({ ...props.rowDetail, period: value })}
+              error={props.rowErrors.find(error => error.field == "period")}
+            />
           </div>
           <div className="col-2">
-            <FieldText name="amount" description="Amount" />
+            <FieldText
+              name="amount"
+              description="Amount"
+              value={props.rowDetail.amount}
+              helpText="Amount of counter row"
+              onChange={value => props.onChangeRow({ ...props.rowDetail, amount: value })}
+              error={props.rowErrors.find(error => error.field == "amount")}
+            />
           </div>
         </div>
       </Modal>

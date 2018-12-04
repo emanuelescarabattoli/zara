@@ -5,7 +5,8 @@ import {
   QUERY_DETAIL_COUNTER,
   MUTATION_CREATE_COUNTER,
   MUTATION_UPDATE_COUNTER,
-  QUERY_LIST_COUNTER
+  QUERY_LIST_COUNTER,
+  MUTATION_CREATE_COUNTER_ROW
 } from "../../queries/index";
 import Page from "../../components/Page/Page";
 import Detail from "./Detail";
@@ -21,7 +22,7 @@ class Counter extends Component {
       detail: {},
       errors: [],
       rowDetail: {},
-      rowError: {},
+      rowErrors: [],
       modalVisible: false
     };
   }
@@ -37,26 +38,71 @@ class Counter extends Component {
     this.setState({ detail });
   };
 
-  onSave = () => {
-    if (this.state.id) {
-      return this.props
-        .update({ variables: { id: this.state.id, title: this.state.detail.title } })
-        .then(response => this.errorOrRedirect(response));
-    }
-    return this.props
-      .create({ variables: { title: this.state.detail.title } })
-      .then(response => this.errorOrRedirect(response));
+  onChangeRow = rowDetail => {
+    this.setState({ rowDetail });
   };
+
+  onSave = () => this.save().then(response => this.errorOrRedirect(response));
+
+  onSaveRow = () => this.saveRow().then(response => this.errorOrCloseModal(response));
+
+  save = () => {
+    if (this.state.id) {
+      return this.props.update({ variables: { id: this.state.id, title: this.state.detail.title } });
+    }
+    return this.props.create({ variables: { title: this.state.detail.title } });
+  };
+
+  saveRow = () => {
+    if (this.state.rowDetail.id) {
+      return this.props.update({ variables: { id: this.state.id, title: this.state.detail.title } });
+    }
+    return this.props.createRow({
+      variables: {
+        counter: this.state.id,
+        description: this.state.rowDetail.description,
+        date: this.state.rowDetail.date,
+        period: this.state.rowDetail.period,
+        amount: this.state.rowDetail.amount
+      }
+    });
+  };
+
+  error = response => this.setState({ errors: response.data.mutationCounter.errors });
+
+  errorRow = response => this.setState({ rowErrors: response.data.mutationCounterRow.errors });
+
+  resetRow = () => this.setState({ rowDetail: {}, rowErrors: [] });
 
   errorOrRedirect = response => {
     if (response.data.mutationCounter.errors.length > 0) {
-      return this.setState({ errors: response.data.mutationCounter.errors });
+      return this.error(response);
     }
     return this.props.history.push("/counters");
   };
 
-  clickAdd = () => this.setState({ modalVisible: true });
+  errorOrOpenModalOnAdd = response => {
+    if (response.data.mutationCounter.errors.length > 0) {
+      return this.error(response);
+    }
+    this.resetRow();
+    return this.openModal();
+  };
+
+  errorOrCloseModal = response => {
+    if (response.data.mutationCounterRow.errors.length > 0) {
+      this.errorRow(response)
+    }
+    this.resetRow();
+    return this.closeModal();
+  };
+
+
+  openModal = () => this.setState({ modalVisible: true });
+
   closeModal = () => this.setState({ modalVisible: false });
+
+  clickAdd = () => this.save().then(response => this.errorOrOpenModalOnAdd(response));
 
   render() {
     let content;
@@ -74,6 +120,10 @@ class Counter extends Component {
           clickAdd={this.clickAdd}
           closeModal={this.closeModal}
           modalVisible={this.state.modalVisible}
+          rowDetail={this.state.rowDetail}
+          rowErrors={this.state.rowErrors}
+          onChangeRow={this.onChangeRow}
+          onSaveRow={this.onSaveRow}
         />
       );
     }
@@ -98,5 +148,9 @@ export default compose(
   graphql(MUTATION_UPDATE_COUNTER, {
     name: "update",
     options: { refetchQueries: [{ query: QUERY_LIST_COUNTER }] }
+  }),
+  graphql(MUTATION_CREATE_COUNTER_ROW, {
+    name: "createRow",
+    options: { notifyOnNetworkStatusChange: true, refetchQueries: [{ query: QUERY_DETAIL_COUNTER }] }
   })
 )(Counter);
