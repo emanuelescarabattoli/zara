@@ -18,7 +18,7 @@ const Page = props => {
         <ul className="menu">
           <li>
             <Link to="/dashboard">
-              <i class="fas fa-chart-area fa-spacing" />
+              <i className="fas fa-chart-area fa-spacing" />
               Dashboard
             </Link>
           </li>

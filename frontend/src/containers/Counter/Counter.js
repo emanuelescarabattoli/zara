@@ -19,9 +19,9 @@ class Counter extends Component {
 
     this.state = {
       id: 0,
-      detail: {},
+      detail: { title: "" },
       errors: [],
-      rowDetail: {},
+      rowDetail: { description: "", date: "", period: "", amount: "" },
       rowErrors: [],
       modalVisible: false
     };
@@ -33,14 +33,6 @@ class Counter extends Component {
       this.setState({ detail: props.query.detailCounter });
     }
   }
-
-  onChange = detail => {
-    this.setState({ detail });
-  };
-
-  onChangeRow = rowDetail => {
-    this.setState({ rowDetail });
-  };
 
   onSave = () => this.save().then(response => this.errorOrRedirect(response));
 
@@ -72,7 +64,7 @@ class Counter extends Component {
 
   errorRow = response => this.setState({ rowErrors: response.data.mutationCounterRow.errors });
 
-  resetRow = () => this.setState({ rowDetail: {}, rowErrors: [] });
+  resetRow = () => this.setState({ rowDetail: { description: "", date: "", period: "", amount: "" }, rowErrors: [] });
 
   errorOrRedirect = response => {
     if (response.data.mutationCounter.errors.length > 0) {
@@ -91,18 +83,21 @@ class Counter extends Component {
 
   errorOrCloseModal = response => {
     if (response.data.mutationCounterRow.errors.length > 0) {
-      this.errorRow(response)
+      this.errorRow(response);
     }
     this.resetRow();
     return this.closeModal();
   };
-
 
   openModal = () => this.setState({ modalVisible: true });
 
   closeModal = () => this.setState({ modalVisible: false });
 
   clickAdd = () => this.save().then(response => this.errorOrOpenModalOnAdd(response));
+
+  onChange = e => this.setState({ detail: { ...this.state.detail, [e.target.name]: e.target.value } });
+
+  onChangeRow = e => this.setState({ rowDetail: { ...this.state.rowDetail, [e.target.name]: e.target.value } });
 
   render() {
     let content;
@@ -151,6 +146,9 @@ export default compose(
   }),
   graphql(MUTATION_CREATE_COUNTER_ROW, {
     name: "createRow",
-    options: { notifyOnNetworkStatusChange: true, refetchQueries: [{ query: QUERY_DETAIL_COUNTER }] }
+    options: props => ({
+      notifyOnNetworkStatusChange: true,
+      refetchQueries: [{ query: QUERY_DETAIL_COUNTER, variables: { id: props.match.params.id } }]
+    })
   })
 )(Counter);

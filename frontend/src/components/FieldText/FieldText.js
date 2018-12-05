@@ -8,7 +8,7 @@ const FieldText = props => {
         name={props.name}
         type={props.type ? props.type : "text"}
         value={props.value}
-        onChange={e => props.onChange(e.target.value)}
+        onChange={props.onChange}
       />
       <small>{props.error && props.error.messages.join(", ")}</small>
     </div>

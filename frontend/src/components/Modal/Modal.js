@@ -9,7 +9,7 @@ const Modal = props => {
       <div>
         <TwoSections title={props.title}>
           <span className="pointer" onClick={props.onCloseModal}>
-            <i class="fas fa-times" />
+            <i className="fas fa-times" />
           </span>
         </TwoSections>
         <div>{props.children}</div>

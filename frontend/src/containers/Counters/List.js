@@ -15,9 +15,11 @@ const List = props => {
         </CardHeader>
         <table>
           <thead>
-            <th>Id</th>
-            <th>Title</th>
-            <th />
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th />
+            </tr>
           </thead>
           <tbody>
             {props.list.map(item => {
@@ -36,7 +38,7 @@ const List = props => {
           </tbody>
         </table>
       </Card>
-      <ButtonPlus link="/counter"/>
+      <ButtonPlus link="/counter" />
     </div>
   );
 };

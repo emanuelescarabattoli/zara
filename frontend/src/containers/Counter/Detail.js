@@ -26,8 +26,8 @@ const Detail = props => {
               description="Title"
               value={props.detail.title}
               helpText="Title of conter"
-              onChange={value => props.onChange({ ...props.detail, title: value })}
-              error={props.errors.find(error => error.field == "title")}
+              onChange={props.onChange}
+              error={props.errors.find(error => error.field === "title")}
             />
           </div>
         </CardBody>
@@ -38,12 +38,14 @@ const Detail = props => {
         </CardSection>
         <table>
           <thead>
-            <th>Id</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Period</th>
-            <th className="align-right">Amount</th>
-            <th />
+            <tr>
+              <th>Id</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Period</th>
+              <th className="align-right">Amount</th>
+              <th />
+            </tr>
           </thead>
           <tbody>
             {props.list &&
@@ -87,8 +89,8 @@ const Detail = props => {
               description="Description"
               value={props.rowDetail.description}
               helpText="Description of counter row"
-              onChange={value => props.onChangeRow({ ...props.rowDetail, description: value })}
-              error={props.rowErrors.find(error => error.field == "description")}
+              onChange={props.onChangeRow}
+              error={props.rowErrors.find(error => error.field === "description")}
             />
           </div>
           <div className="col-2">
@@ -98,8 +100,8 @@ const Detail = props => {
               description="Date"
               value={props.rowDetail.date}
               helpText="Date of counter row"
-              onChange={value => props.onChangeRow({ ...props.rowDetail, date: value })}
-              error={props.rowErrors.find(error => error.field == "date")}
+              onChange={props.onChangeRow}
+              error={props.rowErrors.find(error => error.field === "date")}
             />
           </div>
           <div className="col-2">
@@ -108,8 +110,8 @@ const Detail = props => {
               description="Period"
               value={props.rowDetail.period}
               helpText="Period of counter row"
-              onChange={value => props.onChangeRow({ ...props.rowDetail, period: value })}
-              error={props.rowErrors.find(error => error.field == "period")}
+              onChange={props.onChangeRow}
+              error={props.rowErrors.find(error => error.field === "period")}
             />
           </div>
           <div className="col-2">
@@ -118,8 +120,8 @@ const Detail = props => {
               description="Amount"
               value={props.rowDetail.amount}
               helpText="Amount of counter row"
-              onChange={value => props.onChangeRow({ ...props.rowDetail, amount: value })}
-              error={props.rowErrors.find(error => error.field == "amount")}
+              onChange={props.onChangeRow}
+              error={props.rowErrors.find(error => error.field === "amount")}
             />
           </div>
         </div>
