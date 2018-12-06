@@ -36,7 +36,9 @@ export const QUERY_DETAIL_COUNTER = gql`
 export const MUTATION_CREATE_COUNTER = gql`
   mutation createCounter($title: String!) {
     mutationCounter(input: { title: $title }) {
-      clientMutationId
+      counter {
+        id
+      }
       errors {
         field
         messages
@@ -48,7 +50,9 @@ export const MUTATION_CREATE_COUNTER = gql`
 export const MUTATION_UPDATE_COUNTER = gql`
   mutation updateCounter($id: ID!, $title: String!) {
     mutationCounter(input: { id: $id, title: $title }) {
-      clientMutationId
+      counter {
+        id
+      }
       errors {
         field
         messages
@@ -58,21 +62,38 @@ export const MUTATION_UPDATE_COUNTER = gql`
 `;
 
 export const MUTATION_CREATE_COUNTER_ROW = gql`
-mutation mutationCounterRow($counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Float!) {
-  mutationCounterRow(input: {counter: $counter, date: $date, description: $description, period: $period, amount: $amount}) {
-    errors {
-      messages
+  mutation mutationCounterRow($counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Float!) {
+    mutationCounterRow(
+      input: { counter: $counter, date: $date, description: $description, period: $period, amount: $amount }
+    ) {
+      counterRow {
+        id
+      }
+      errors {
+        messages
+      }
     }
   }
-}
 `;
 
 export const MUTATION_UPDATE_COUNTER_ROW = gql`
-mutation mutationCounterRow($id: ID!, $counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Float!) {
-  mutationCounterRow(input: {id: $id, counter: $counter, date: $date, description: $description, period: $period, amount: $amount}) {
-    errors {
-      messages
+  mutation mutationCounterRow(
+    $id: ID!
+    $counter: ID!
+    $date: Date!
+    $description: String!
+    $period: String!
+    $amount: Float!
+  ) {
+    mutationCounterRow(
+      input: { id: $id, counter: $counter, date: $date, description: $description, period: $period, amount: $amount }
+    ) {
+      counterRow {
+        id
+      }
+      errors {
+        messages
+      }
     }
   }
-}
 `;
