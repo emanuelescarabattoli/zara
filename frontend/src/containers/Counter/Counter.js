@@ -81,6 +81,18 @@ class Counter extends Component {
     return this.openModal();
   };
 
+  errorOrOpenModalOnEdit = (response, id) => {
+    if (response.data.mutationCounter.errors.length > 0) {
+      return this.error(response);
+    }
+
+    const detail = this.state.detail.counterrowSet.find(row => row.id === id);
+
+    this.setState({ rowDetail: detail });
+
+    return this.openModal();
+  };
+
   errorOrCloseModal = response => {
     if (response.data.mutationCounterRow.errors.length > 0) {
       this.errorRow(response);
@@ -98,6 +110,8 @@ class Counter extends Component {
   onChange = e => this.setState({ detail: { ...this.state.detail, [e.target.name]: e.target.value } });
 
   onChangeRow = e => this.setState({ rowDetail: { ...this.state.rowDetail, [e.target.name]: e.target.value } });
+
+  clickEdit = id => this.save().then(response => this.errorOrOpenModalOnEdit(response, id));
 
   render() {
     let content;
@@ -119,6 +133,7 @@ class Counter extends Component {
           rowErrors={this.state.rowErrors}
           onChangeRow={this.onChangeRow}
           onSaveRow={this.onSaveRow}
+          clickEdit={this.clickEdit}
         />
       );
     }

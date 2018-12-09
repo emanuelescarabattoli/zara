@@ -138,10 +138,16 @@ ul.menu li a:hover {
   border-collapse: collapse;
 }
 
-.card > table tr td:nth-child(2) a {
+.card > table tr td:nth-child(2) a,
+.card > table tr td:nth-child(2) button {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  background: transparent;
   border-bottom: dotted 1px #b1bbdb;
   color: #b1bbdb;
   cursor: pointer;
+  font-size: 1em;
 }
 
 .card > table tr td:last-child {
@@ -429,7 +435,7 @@ textarea:focus {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-.modal.hidden{
+.modal.hidden {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
@@ -444,12 +450,12 @@ textarea:focus {
   width: calc(100% - 60px);
   height: 200px;
   background-color: #22252b;
-  transition: bottom 0.15s
+  transition: bottom 0.15s;
 }
 
 .modal.hidden > div {
   bottom: -240px;
-  transition: bottom 0.15s
+  transition: bottom 0.15s;
 }
 
 .modal > div h4 {

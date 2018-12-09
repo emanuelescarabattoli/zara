@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { formatNumber } from "../../utils/utils";
 import FieldText from "../../components/FieldText/FieldText";
@@ -54,7 +53,7 @@ const Detail = props => {
                   <tr key={item.id}>
                     <td width="5%">{item.id}</td>
                     <td>
-                      <Link to={"/counter/" + item.id}>{item.description}</Link>
+                      <button onClick={(e) => props.clickEdit(item.id)}>{item.description}</button>
                     </td>
                     <td>{item.date}</td>
                     <td>{item.period}</td>
