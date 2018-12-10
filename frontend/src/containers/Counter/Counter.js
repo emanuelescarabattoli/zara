@@ -43,22 +43,14 @@ class Counter extends Component {
     if (this.state.id) {
       return this.props.update({ variables: { id: this.state.id, title: this.state.detail.title } });
     }
-    return this.props.create({ variables: { title: this.state.detail.title } });
+    return this.props.create({ variables: { ...this.state.detail } });
   };
 
   saveRow = () => {
     if (this.state.rowDetail.id) {
       return this.props.updateRow({ variables: { ...this.state.rowDetail, counter: this.state.id } });
     }
-    return this.props.createRow({
-      variables: {
-        counter: this.state.id,
-        description: this.state.rowDetail.description,
-        date: this.state.rowDetail.date,
-        period: this.state.rowDetail.period,
-        amount: this.state.rowDetail.amount
-      }
-    });
+    return this.props.createRow({ variables: { ...this.state.rowDetail, counter: this.state.id } });
   };
 
   error = response => this.setState({ errors: response.data.mutationCounter.errors });
