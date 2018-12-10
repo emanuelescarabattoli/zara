@@ -62,9 +62,21 @@ export const MUTATION_UPDATE_COUNTER = gql`
 `;
 
 export const MUTATION_CREATE_COUNTER_ROW = gql`
-  mutation mutationCounterRow($counter: ID!, $date: Date!, $description: String!, $period: String!, $amount: Float!) {
+  mutation mutationCounterRow(
+    $counter: ID!
+    $date: Date!
+    $description: String!
+    $period: String!
+    $amount: Float!
+  ) {
     mutationCounterRow(
-      input: { counter: $counter, date: $date, description: $description, period: $period, amount: $amount }
+      input: {
+        counter: $counter
+        date: $date
+        description: $description
+        period: $period
+        amount: $amount
+      }
     ) {
       counterRow {
         id
@@ -86,7 +98,14 @@ export const MUTATION_UPDATE_COUNTER_ROW = gql`
     $amount: Float!
   ) {
     mutationCounterRow(
-      input: { id: $id, counter: $counter, date: $date, description: $description, period: $period, amount: $amount }
+      input: {
+        id: $id
+        counter: $counter
+        date: $date
+        description: $description
+        period: $period
+        amount: $amount
+      }
     ) {
       counterRow {
         id

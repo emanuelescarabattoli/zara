@@ -6,7 +6,8 @@ import {
   MUTATION_CREATE_COUNTER,
   MUTATION_UPDATE_COUNTER,
   QUERY_LIST_COUNTER,
-  MUTATION_CREATE_COUNTER_ROW
+  MUTATION_CREATE_COUNTER_ROW,
+  MUTATION_UPDATE_COUNTER_ROW
 } from "../../queries/index";
 import Page from "../../components/Page/Page";
 import Detail from "./Detail";
@@ -47,7 +48,7 @@ class Counter extends Component {
 
   saveRow = () => {
     if (this.state.rowDetail.id) {
-      return this.props.update({ variables: { id: this.state.id, title: this.state.detail.title } });
+      return this.props.updateRow({ variables: { ...this.state.rowDetail, counter: this.state.id } });
     }
     return this.props.createRow({
       variables: {
@@ -165,5 +166,12 @@ export default compose(
       notifyOnNetworkStatusChange: true,
       refetchQueries: [{ query: QUERY_DETAIL_COUNTER, variables: { id: props.match.params.id } }]
     })
-  })
+  }),
+  graphql(MUTATION_UPDATE_COUNTER_ROW, {
+    name: "updateRow",
+    options: props => ({
+      notifyOnNetworkStatusChange: true,
+      refetchQueries: [{ query: QUERY_DETAIL_COUNTER, variables: { id: props.match.params.id } }]
+    })
+  }),
 )(Counter);
