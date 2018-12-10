@@ -7,7 +7,8 @@ import {
   MUTATION_UPDATE_COUNTER,
   QUERY_LIST_COUNTER,
   MUTATION_CREATE_COUNTER_ROW,
-  MUTATION_UPDATE_COUNTER_ROW
+  MUTATION_UPDATE_COUNTER_ROW,
+  MUTATION_DELETE_COUNTER_ROW
 } from "../../queries/index";
 import Page from "../../components/Page/Page";
 import Detail from "./Detail";
@@ -37,27 +38,40 @@ class Counter extends Component {
 
   onSave = () => this.save().then(response => this.errorOrRedirect(response));
 
-  onSaveRow = () => this.saveRow().then(response => this.errorOrCloseModal(response));
+  onSaveRow = () =>
+    this.saveRow().then(response => this.errorOrCloseModal(response));
 
   save = () => {
     if (this.state.id) {
-      return this.props.update({ variables: { id: this.state.id, title: this.state.detail.title } });
+      return this.props.update({
+        variables: { id: this.state.id, title: this.state.detail.title }
+      });
     }
     return this.props.create({ variables: { ...this.state.detail } });
   };
 
   saveRow = () => {
     if (this.state.rowDetail.id) {
-      return this.props.updateRow({ variables: { ...this.state.rowDetail, counter: this.state.id } });
+      return this.props.updateRow({
+        variables: { ...this.state.rowDetail, counter: this.state.id }
+      });
     }
-    return this.props.createRow({ variables: { ...this.state.rowDetail, counter: this.state.id } });
+    return this.props.createRow({
+      variables: { ...this.state.rowDetail, counter: this.state.id }
+    });
   };
 
-  error = response => this.setState({ errors: response.data.mutationCounter.errors });
+  error = response =>
+    this.setState({ errors: response.data.mutationCounter.errors });
 
-  errorRow = response => this.setState({ rowErrors: response.data.mutationCounterRow.errors });
+  errorRow = response =>
+    this.setState({ rowErrors: response.data.mutationCounterRow.errors });
 
-  resetRow = () => this.setState({ rowDetail: { description: "", date: "", period: "", amount: "" }, rowErrors: [] });
+  resetRow = () =>
+    this.setState({
+      rowDetail: { description: "", date: "", period: "", amount: "" },
+      rowErrors: []
+    });
 
   errorOrRedirect = response => {
     if (response.data.mutationCounter.errors.length > 0) {
@@ -98,13 +112,23 @@ class Counter extends Component {
 
   closeModal = () => this.setState({ modalVisible: false });
 
-  clickAdd = () => this.save().then(response => this.errorOrOpenModalOnAdd(response));
+  clickAdd = () =>
+    this.save().then(response => this.errorOrOpenModalOnAdd(response));
 
-  onChange = e => this.setState({ detail: { ...this.state.detail, [e.target.name]: e.target.value } });
+  onChange = e =>
+    this.setState({
+      detail: { ...this.state.detail, [e.target.name]: e.target.value }
+    });
 
-  onChangeRow = e => this.setState({ rowDetail: { ...this.state.rowDetail, [e.target.name]: e.target.value } });
+  onChangeRow = e =>
+    this.setState({
+      rowDetail: { ...this.state.rowDetail, [e.target.name]: e.target.value }
+    });
 
-  clickEdit = id => this.save().then(response => this.errorOrOpenModalOnEdit(response, id));
+  clickEdit = id =>
+    this.save().then(response => this.errorOrOpenModalOnEdit(response, id));
+
+  clickDelete = id => this.props.delete({ variables: { pk: id } });
 
   render() {
     let content;
@@ -127,6 +151,7 @@ class Counter extends Component {
           onChangeRow={this.onChangeRow}
           onSaveRow={this.onSaveRow}
           clickEdit={this.clickEdit}
+          clickDelete={this.clickDelete}
         />
       );
     }
@@ -156,14 +181,36 @@ export default compose(
     name: "createRow",
     options: props => ({
       notifyOnNetworkStatusChange: true,
-      refetchQueries: [{ query: QUERY_DETAIL_COUNTER, variables: { id: props.match.params.id } }]
+      refetchQueries: [
+        {
+          query: QUERY_DETAIL_COUNTER,
+          variables: { id: props.match.params.id }
+        }
+      ]
     })
   }),
   graphql(MUTATION_UPDATE_COUNTER_ROW, {
     name: "updateRow",
     options: props => ({
       notifyOnNetworkStatusChange: true,
-      refetchQueries: [{ query: QUERY_DETAIL_COUNTER, variables: { id: props.match.params.id } }]
+      refetchQueries: [
+        {
+          query: QUERY_DETAIL_COUNTER,
+          variables: { id: props.match.params.id }
+        }
+      ]
     })
   }),
+  graphql(MUTATION_DELETE_COUNTER_ROW, {
+    name: "delete",
+    options: props => ({
+      notifyOnNetworkStatusChange: true,
+      refetchQueries: [
+        {
+          query: QUERY_DETAIL_COUNTER,
+          variables: { id: props.match.params.id }
+        }
+      ]
+    })
+  })
 )(Counter);

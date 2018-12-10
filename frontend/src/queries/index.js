@@ -116,3 +116,11 @@ export const MUTATION_UPDATE_COUNTER_ROW = gql`
     }
   }
 `;
+
+export const MUTATION_DELETE_COUNTER_ROW = gql`
+  mutation mutationDeleteCounterRow($pk: Int!) {
+    mutationDeleteCounterRow(pk: $pk) {
+      success
+    }
+  }
+`;

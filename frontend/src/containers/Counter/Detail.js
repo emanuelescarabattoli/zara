@@ -59,7 +59,7 @@ const Detail = props => {
                     <td>{item.period}</td>
                     <td className="align-right">{formatNumber(item.amount)} &euro;</td>
                     <td>
-                      <Delete onClick={() => props.onDelete(item.id)} />
+                      <Delete onClick={() => props.clickDelete(item.id)} />
                     </td>
                   </tr>
                 );
