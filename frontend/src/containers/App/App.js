@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import Dashboard from "../Dashboard/Dashboard"
 import Counters from "../Counters/Counters"
 import Counter from "../Counter/Counter"
+import Totals from "../Totals/Totals"
 
 import "./App.css";
 
@@ -21,6 +22,7 @@ class App extends Component {
         <PrivateRoute exact path="/counters" component={Counters} />
         <PrivateRoute exact path="/counter" component={Counter} />
         <PrivateRoute exact path="/counter/:id" component={Counter} />
+        <PrivateRoute exact path="/totals" component={Totals} />
       </div>
     );
   }
