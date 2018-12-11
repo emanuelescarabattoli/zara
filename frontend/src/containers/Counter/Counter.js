@@ -38,8 +38,7 @@ class Counter extends Component {
 
   onSave = () => this.save().then(response => this.errorOrRedirect(response));
 
-  onSaveRow = () =>
-    this.saveRow().then(response => this.errorOrCloseModal(response));
+  onSaveRow = () => this.saveRow().then(response => this.errorOrCloseModal(response));
 
   save = () => {
     if (this.state.id) {
@@ -61,11 +60,9 @@ class Counter extends Component {
     });
   };
 
-  error = response =>
-    this.setState({ errors: response.data.mutationCounter.errors });
+  error = response => this.setState({ errors: response.data.mutationCounter.errors });
 
-  errorRow = response =>
-    this.setState({ rowErrors: response.data.mutationCounterRow.errors });
+  errorRow = response => this.setState({ rowErrors: response.data.mutationCounterRow.errors });
 
   resetRow = () =>
     this.setState({
@@ -77,7 +74,7 @@ class Counter extends Component {
     if (response.data.mutationCounter.errors.length > 0) {
       return this.error(response);
     }
-    return this.props.history.push("/counters");
+    return this.props.history.push("/counter/" + response.data.mutationCounter.counter.id);
   };
 
   errorOrOpenModalOnAdd = response => {
@@ -112,8 +109,7 @@ class Counter extends Component {
 
   closeModal = () => this.setState({ modalVisible: false });
 
-  clickAdd = () =>
-    this.save().then(response => this.errorOrOpenModalOnAdd(response));
+  clickAdd = () => this.save().then(response => this.errorOrOpenModalOnAdd(response));
 
   onChange = e =>
     this.setState({
@@ -125,10 +121,11 @@ class Counter extends Component {
       rowDetail: { ...this.state.rowDetail, [e.target.name]: e.target.value }
     });
 
-  clickEdit = id =>
-    this.save().then(response => this.errorOrOpenModalOnEdit(response, id));
+  clickEdit = id => this.save().then(response => this.errorOrOpenModalOnEdit(response, id));
 
   clickDelete = id => this.props.delete({ variables: { pk: id } });
+
+  buttonAddDisabled = () => this.state.id === 0;
 
   render() {
     let content;
@@ -152,6 +149,7 @@ class Counter extends Component {
           onSaveRow={this.onSaveRow}
           clickEdit={this.clickEdit}
           clickDelete={this.clickDelete}
+          buttonAddDisabled={this.buttonAddDisabled()}
         />
       );
     }

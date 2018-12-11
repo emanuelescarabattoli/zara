@@ -412,6 +412,21 @@ textarea:focus {
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.4);
 }
 
+.button:disabled {
+  background-color: #888888;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.button:disabled:hover {
+  background-color: #888888;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.button:disabled:active {
+  background-color: #888888;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
 .veritical-align-center {
   display: flex;
   align-items: center;

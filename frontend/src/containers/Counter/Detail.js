@@ -32,7 +32,9 @@ const Detail = props => {
         </CardBody>
         <CardSection>
           <TwoSections title="Rows">
-            <Button onClick={props.clickAdd}>Add</Button>
+            <Button disabled={props.buttonAddDisabled} onClick={props.clickAdd}>
+              Add
+            </Button>
           </TwoSections>
         </CardSection>
         <table>
@@ -53,7 +55,7 @@ const Detail = props => {
                   <tr key={item.id}>
                     <td width="5%">{item.id}</td>
                     <td>
-                      <button onClick={(e) => props.clickEdit(item.id)}>{item.description}</button>
+                      <button onClick={e => props.clickEdit(item.id)}>{item.description}</button>
                     </td>
                     <td>{item.date}</td>
                     <td>{item.period}</td>
@@ -82,16 +84,6 @@ const Detail = props => {
         onValidate={props.onSaveRow}
       >
         <div className="grid">
-          <div className="col-6">
-            <FieldText
-              name="description"
-              description="Description"
-              value={props.rowDetail.description}
-              helpText="Description of counter row"
-              onChange={props.onChangeRow}
-              error={props.rowErrors.find(error => error.field === "description")}
-            />
-          </div>
           <div className="col-2">
             <FieldText
               type="date"
@@ -101,6 +93,16 @@ const Detail = props => {
               helpText="Date of counter row"
               onChange={props.onChangeRow}
               error={props.rowErrors.find(error => error.field === "date")}
+            />
+          </div>
+          <div className="col-6">
+            <FieldText
+              name="description"
+              description="Description"
+              value={props.rowDetail.description}
+              helpText="Description of counter row"
+              onChange={props.onChangeRow}
+              error={props.rowErrors.find(error => error.field === "description")}
             />
           </div>
           <div className="col-2">
