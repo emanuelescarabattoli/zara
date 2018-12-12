@@ -16,16 +16,16 @@ const List = props => {
         <table>
           <thead>
             <tr>
-              <th>Id</th>
+              <th width="5%">Id</th>
               <th>Title</th>
-              <th />
+              <th width="15%" />
             </tr>
           </thead>
           <tbody>
             {props.list.map(item => {
               return (
                 <tr key={item.id}>
-                  <td width="5%">{item.id}</td>
+                  <td>{item.id}</td>
                   <td>
                     <Link to={"/total/" + item.id}>{item.title}</Link>
                   </td>

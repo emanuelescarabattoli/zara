@@ -2,7 +2,12 @@ import React from "react";
 
 import { formatNumber } from "../../utils/utils";
 import FieldText from "../../components/FieldText/FieldText";
-import { Card, CardBody, CardHeader, CardSection } from "../../components/Card/Card";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardSection
+} from "../../components/Card/Card";
 import TwoSections from "../../components/TwoSections/TwoSections";
 import Button from "../../components/Button/Button";
 import Delete from "../../components/Delete/Delete";
@@ -40,12 +45,12 @@ const Detail = props => {
         <table>
           <thead>
             <tr>
-              <th>Id</th>
+              <th width="5%">Id</th>
               <th>Description</th>
               <th>Date</th>
               <th>Period</th>
               <th className="align-right">Amount</th>
-              <th />
+              <th width="15%" />
             </tr>
           </thead>
           <tbody>
@@ -53,13 +58,17 @@ const Detail = props => {
               props.list.map(item => {
                 return (
                   <tr key={item.id}>
-                    <td width="5%">{item.id}</td>
+                    <td>{item.id}</td>
                     <td>
-                      <button onClick={e => props.clickEdit(item.id)}>{item.description}</button>
+                      <button onClick={e => props.clickEdit(item.id)}>
+                        {item.description}
+                      </button>
                     </td>
                     <td>{item.date}</td>
                     <td>{item.period}</td>
-                    <td className="align-right">{formatNumber(item.amount)} &euro;</td>
+                    <td className="align-right">
+                      {formatNumber(item.amount)} &euro;
+                    </td>
                     <td>
                       <Delete onClick={() => props.clickDelete(item.id)} />
                     </td>
@@ -102,7 +111,9 @@ const Detail = props => {
               value={props.rowDetail.description}
               helpText="Description of counter row"
               onChange={props.onChangeRow}
-              error={props.rowErrors.find(error => error.field === "description")}
+              error={props.rowErrors.find(
+                error => error.field === "description"
+              )}
             />
           </div>
           <div className="col-2">
