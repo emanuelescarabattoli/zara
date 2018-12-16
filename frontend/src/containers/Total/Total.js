@@ -8,7 +8,8 @@ import {
   QUERY_LIST_TOTAL,
   MUTATION_CREATE_TOTAL_ROW,
   MUTATION_UPDATE_TOTAL_ROW,
-  MUTATION_DELETE_TOTAL_ROW
+  MUTATION_DELETE_TOTAL_ROW,
+  QUERY_LIST_COUNTER
 } from "../../queries/index";
 import Page from "../../components/Page/Page";
 import Detail from "./Detail";
@@ -150,6 +151,7 @@ class Total extends Component {
           clickEdit={this.clickEdit}
           clickDelete={this.clickDelete}
           buttonAddDisabled={this.buttonAddDisabled()}
+          listCounter={this.props.queryListCounter.data}
         />
       );
     }
@@ -210,5 +212,6 @@ export default compose(
         }
       ]
     })
-  })
+  }),
+  graphql(QUERY_LIST_COUNTER, { name: "queryListCounter" })
 )(Total);
