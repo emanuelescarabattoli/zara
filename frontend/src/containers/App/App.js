@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard/Dashboard"
 import Counters from "../Counters/Counters"
 import Counter from "../Counter/Counter"
 import Totals from "../Totals/Totals"
+import Total from "../Total/Total"
 
 import "./App.css";
 
@@ -23,6 +24,8 @@ class App extends Component {
         <PrivateRoute exact path="/counter" component={Counter} />
         <PrivateRoute exact path="/counter/:id" component={Counter} />
         <PrivateRoute exact path="/totals" component={Totals} />
+        <PrivateRoute exact path="/total" component={Total} />
+        <PrivateRoute exact path="/total/:id" component={Total} />
       </div>
     );
   }

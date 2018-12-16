@@ -122,3 +122,83 @@ export const MUTATION_DELETE_TOTAL = gql`
     }
   }
 `;
+
+export const QUERY_DETAIL_TOTAL = gql`
+  query($id: Int) {
+    detailTotal(id: $id) {
+      id
+      title
+      totalrowSet {
+        id
+        total {
+          id
+        }
+        counter {
+          id
+        }
+      }
+    }
+  }
+`;
+
+export const MUTATION_CREATE_TOTAL = gql`
+  mutation createTotal($title: String!) {
+    mutationTotal(input: { title: $title }) {
+      total {
+        id
+      }
+      errors {
+        field
+        messages
+      }
+    }
+  }
+`;
+
+export const MUTATION_UPDATE_TOTAL = gql`
+  mutation updateTotal($id: ID!, $title: String!) {
+    mutationTotal(input: { id: $id, title: $title }) {
+      total {
+        id
+      }
+      errors {
+        field
+        messages
+      }
+    }
+  }
+`;
+
+export const MUTATION_CREATE_TOTAL_ROW = gql`
+  mutation mutationTotalRow($total: ID!, $counter: ID!) {
+    mutationCounterRow(input: { total: $total, counter: $counter }) {
+      totalRow {
+        id
+      }
+      errors {
+        messages
+      }
+    }
+  }
+`;
+
+export const MUTATION_UPDATE_TOTAL_ROW = gql`
+  mutation mutationTotalRow($id: ID!, $total: ID!, $counter: ID!) {
+    mutationCounterRow(input: { id: $id, total: $total, counter: $counter }) {
+      totalRow {
+        id
+      }
+      errors {
+        messages
+      }
+    }
+  }
+`;
+
+export const MUTATION_DELETE_TOTAL_ROW = gql`
+  mutation mutationDeleteTotalRow($pk: Int!) {
+    mutationDeleteTotalRow(pk: $pk) {
+      success
+    }
+  }
+`;

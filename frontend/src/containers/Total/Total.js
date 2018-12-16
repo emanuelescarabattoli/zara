@@ -2,20 +2,20 @@ import React, { Component } from "react";
 import { graphql, compose } from "react-apollo";
 
 import {
-  QUERY_DETAIL_COUNTER,
-  MUTATION_CREATE_COUNTER,
-  MUTATION_UPDATE_COUNTER,
-  QUERY_LIST_COUNTER,
-  MUTATION_CREATE_COUNTER_ROW,
-  MUTATION_UPDATE_COUNTER_ROW,
-  MUTATION_DELETE_COUNTER_ROW
+  QUERY_DETAIL_TOTAL,
+  MUTATION_CREATE_TOTAL,
+  MUTATION_UPDATE_TOTAL,
+  QUERY_LIST_TOTAL,
+  MUTATION_CREATE_TOTAL_ROW,
+  MUTATION_UPDATE_TOTAL_ROW,
+  MUTATION_DELETE_TOTAL_ROW
 } from "../../queries/index";
 import Page from "../../components/Page/Page";
 import Detail from "./Detail";
 
-import "./Counter.css";
+import "./Total.css";
 
-class Counter extends Component {
+class Total extends Component {
   constructor(props) {
     super(props);
 
@@ -30,9 +30,9 @@ class Counter extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.query.detailCounter) {
+    if (props.query.detailTotal) {
       this.setState({ id: props.match.params.id });
-      this.setState({ detail: props.query.detailCounter });
+      this.setState({ detail: props.query.detailTotal });
     }
   }
 
@@ -52,33 +52,33 @@ class Counter extends Component {
   saveRow = () => {
     if (this.state.rowDetail.id) {
       return this.props.updateRow({
-        variables: { ...this.state.rowDetail, counter: this.state.id }
+        variables: { ...this.state.rowDetail, total: this.state.id }
       });
     }
     return this.props.createRow({
-      variables: { ...this.state.rowDetail, counter: this.state.id }
+      variables: { ...this.state.rowDetail, total: this.state.id }
     });
   };
 
-  error = response => this.setState({ errors: response.data.mutationCounter.errors });
+  error = response => this.setState({ errors: response.data.mutationTotal.errors });
 
-  errorRow = response => this.setState({ rowErrors: response.data.mutationCounterRow.errors });
+  errorRow = response => this.setState({ rowErrors: response.data.mutationTotalRow.errors });
 
   resetRow = () =>
     this.setState({
-      rowDetail: { description: "", date: "", period: "", amount: "" },
+      rowDetail: { counter: 0 },
       rowErrors: []
     });
 
   errorOrRedirect = response => {
-    if (response.data.mutationCounter.errors.length > 0) {
+    if (response.data.mutationTotal.errors.length > 0) {
       return this.error(response);
     }
-    return this.props.history.push("/counter/" + response.data.mutationCounter.counter.id);
+    return this.props.history.push("/total/" + response.data.mutationTotal.total.id);
   };
 
   errorOrOpenModalOnAdd = response => {
-    if (response.data.mutationCounter.errors.length > 0) {
+    if (response.data.mutationTotal.errors.length > 0) {
       return this.error(response);
     }
     this.resetRow();
@@ -86,11 +86,11 @@ class Counter extends Component {
   };
 
   errorOrOpenModalOnEdit = (response, id) => {
-    if (response.data.mutationCounter.errors.length > 0) {
+    if (response.data.mutationTotal.errors.length > 0) {
       return this.error(response);
     }
 
-    const detail = this.state.detail.counterrowSet.find(row => row.id === id);
+    const detail = this.state.detail.totalrowSet.find(row => row.id === id);
 
     this.setState({ rowDetail: detail });
 
@@ -98,7 +98,7 @@ class Counter extends Component {
   };
 
   errorOrCloseModal = response => {
-    if (response.data.mutationCounterRow.errors.length > 0) {
+    if (response.data.mutationTotalRow.errors.length > 0) {
       this.errorRow(response);
     }
     this.resetRow();
@@ -139,7 +139,7 @@ class Counter extends Component {
           onChange={this.onChange}
           onSave={this.onSave}
           errors={this.state.errors}
-          list={this.state.detail.counterrowSet}
+          list={this.state.detail.totalrowSet}
           clickAdd={this.clickAdd}
           closeModal={this.closeModal}
           modalVisible={this.state.modalVisible}
@@ -154,12 +154,12 @@ class Counter extends Component {
       );
     }
 
-    return <Page title="Counter">{content}</Page>;
+    return <Page title="Total">{content}</Page>;
   }
 }
 
 export default compose(
-  graphql(QUERY_DETAIL_COUNTER, {
+  graphql(QUERY_DETAIL_TOTAL, {
     name: "query",
     options: props => ({
       notifyOnNetworkStatusChange: true,
@@ -167,48 +167,48 @@ export default compose(
       fetchPolicy: "network-only"
     })
   }),
-  graphql(MUTATION_CREATE_COUNTER, {
+  graphql(MUTATION_CREATE_TOTAL, {
     name: "create",
-    options: { refetchQueries: [{ query: QUERY_LIST_COUNTER }] }
+    options: { refetchQueries: [{ query: QUERY_LIST_TOTAL }] }
   }),
-  graphql(MUTATION_UPDATE_COUNTER, {
+  graphql(MUTATION_UPDATE_TOTAL, {
     name: "update",
-    options: { refetchQueries: [{ query: QUERY_LIST_COUNTER }] }
+    options: { refetchQueries: [{ query: QUERY_LIST_TOTAL }] }
   }),
-  graphql(MUTATION_CREATE_COUNTER_ROW, {
+  graphql(MUTATION_CREATE_TOTAL_ROW, {
     name: "createRow",
     options: props => ({
       notifyOnNetworkStatusChange: true,
       refetchQueries: [
         {
-          query: QUERY_DETAIL_COUNTER,
+          query: QUERY_DETAIL_TOTAL,
           variables: { id: props.match.params.id }
         }
       ]
     })
   }),
-  graphql(MUTATION_UPDATE_COUNTER_ROW, {
+  graphql(MUTATION_UPDATE_TOTAL_ROW, {
     name: "updateRow",
     options: props => ({
       notifyOnNetworkStatusChange: true,
       refetchQueries: [
         {
-          query: QUERY_DETAIL_COUNTER,
+          query: QUERY_DETAIL_TOTAL,
           variables: { id: props.match.params.id }
         }
       ]
     })
   }),
-  graphql(MUTATION_DELETE_COUNTER_ROW, {
+  graphql(MUTATION_DELETE_TOTAL_ROW, {
     name: "delete",
     options: props => ({
       notifyOnNetworkStatusChange: true,
       refetchQueries: [
         {
-          query: QUERY_DETAIL_COUNTER,
+          query: QUERY_DETAIL_TOTAL,
           variables: { id: props.match.params.id }
         }
       ]
     })
   })
-)(Counter);
+)(Total);
