@@ -275,7 +275,8 @@ input[type="date"],
 input[type="time"],
 input[type="number"],
 input[type="password"],
-textarea {
+textarea,
+select {
   margin: 0px;
   padding: 6px;
   display: block;
@@ -297,7 +298,9 @@ input[type="number"]:hover,
 input[type="password"]:focus,
 input[type="password"]:hover,
 textarea:hover,
-textarea:focus {
+textarea:focus,
+select:hover,
+select:focus {
   border: solid 1px #8233cc;
 }
 

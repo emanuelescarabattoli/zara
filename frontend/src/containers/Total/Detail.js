@@ -47,9 +47,7 @@ const Detail = props => {
           <thead>
             <tr>
               <th width="5%">Id</th>
-              <th>Description</th>
-              <th>Date</th>
-              <th>Period</th>
+              <th>Counter</th>
               <th className="align-right">Amount</th>
               <th width="15%" />
             </tr>
@@ -62,11 +60,9 @@ const Detail = props => {
                     <td>{item.id}</td>
                     <td>
                       <button onClick={e => props.clickEdit(item.id)}>
-                        {item.description}
+                        {item.counter.title}
                       </button>
                     </td>
-                    <td>{item.date}</td>
-                    <td>{item.period}</td>
                     <td className="align-right">
                       {formatNumber(item.amount)} &euro;
                     </td>
@@ -79,7 +75,7 @@ const Detail = props => {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan={5} className="align-right">
+              <td colSpan={3} className="align-right">
                 <Total list={props.list || []} column="amount" />
               </td>
               <td colSpan={1} />
