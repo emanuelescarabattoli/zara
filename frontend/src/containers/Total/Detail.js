@@ -2,6 +2,7 @@ import React from "react";
 
 import { formatNumber } from "../../utils/utils";
 import FieldText from "../../components/FieldText/FieldText";
+import FieldSelect from "../../components/FieldSelect/FieldSelect";
 import {
   Card,
   CardBody,
@@ -93,47 +94,15 @@ const Detail = props => {
         onValidate={props.onSaveRow}
       >
         <div className="grid">
-          <div className="col-2">
-            <FieldText
-              type="date"
-              name="date"
-              description="Date"
-              value={props.rowDetail.date}
-              helpText="Date of counter row"
+          <div className="col-6">
+            <FieldSelect
+              name="counter"
+              description="Counter"
+              value={props.rowDetail.counter}
+              options={props.counterList}
+              helpText="Counter"
               onChange={props.onChangeRow}
               error={props.rowErrors.find(error => error.field === "date")}
-            />
-          </div>
-          <div className="col-6">
-            <FieldText
-              name="description"
-              description="Description"
-              value={props.rowDetail.description}
-              helpText="Description of counter row"
-              onChange={props.onChangeRow}
-              error={props.rowErrors.find(
-                error => error.field === "description"
-              )}
-            />
-          </div>
-          <div className="col-2">
-            <FieldText
-              name="period"
-              description="Period"
-              value={props.rowDetail.period}
-              helpText="Period of counter row"
-              onChange={props.onChangeRow}
-              error={props.rowErrors.find(error => error.field === "period")}
-            />
-          </div>
-          <div className="col-2">
-            <FieldText
-              name="amount"
-              description="Amount"
-              value={props.rowDetail.amount}
-              helpText="Amount of counter row"
-              onChange={props.onChangeRow}
-              error={props.rowErrors.find(error => error.field === "amount")}
             />
           </div>
         </div>

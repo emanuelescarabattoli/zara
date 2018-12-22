@@ -128,10 +128,16 @@ class Total extends Component {
 
   buttonAddDisabled = () => this.state.id === 0;
 
+  adaptCounterList = () => {
+    let result = [];
+    this.props.queryListCounter.listCounter.map(counter => result.push({ value: counter.id, label: counter.title }));
+    return result;
+  };
+
   render() {
     let content;
 
-    if (this.props.query.loading) {
+    if (this.props.query.loading || this.props.queryListCounter.loading) {
       content = "Loading...";
     } else {
       content = (
@@ -151,7 +157,7 @@ class Total extends Component {
           clickEdit={this.clickEdit}
           clickDelete={this.clickDelete}
           buttonAddDisabled={this.buttonAddDisabled()}
-          listCounter={this.props.queryListCounter.data}
+          counterList={this.adaptCounterList()}
         />
       );
     }
