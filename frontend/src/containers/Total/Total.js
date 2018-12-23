@@ -134,6 +134,15 @@ class Total extends Component {
     return result;
   };
 
+  adaptTotalRowList = () => {
+    let result = [];
+    this.state.detail.totalrowSet.map(totalRow => {
+      const amount = totalRow.counter.counterrowSet.reduce((sum, value) => sum + value.amount, 0);
+      result.push({ ...totalRow, amount });
+    });
+    return result;
+  };
+
   render() {
     let content;
 
@@ -146,7 +155,7 @@ class Total extends Component {
           onChange={this.onChange}
           onSave={this.onSave}
           errors={this.state.errors}
-          list={this.state.detail.totalrowSet}
+          list={this.adaptTotalRowList()}
           clickAdd={this.clickAdd}
           closeModal={this.closeModal}
           modalVisible={this.state.modalVisible}

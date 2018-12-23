@@ -60,7 +60,7 @@ const Detail = props => {
                   <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>
-                      <button onClick={e => props.clickEdit(item.id)}>
+                      <button onClick={() => props.clickEdit(item.id)}>
                         {item.description}
                       </button>
                     </td>

@@ -133,6 +133,9 @@ export const QUERY_DETAIL_TOTAL = gql`
         counter {
           id
           title
+          counterrowSet {
+            amount
+          }
         }
       }
     }
