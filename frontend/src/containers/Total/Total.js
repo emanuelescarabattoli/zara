@@ -139,6 +139,7 @@ class Total extends Component {
     this.state.detail.totalrowSet.map(totalRow => {
       const amount = totalRow.counter.counterrowSet.reduce((sum, value) => sum + value.amount, 0);
       result.push({ ...totalRow, amount });
+      return null;
     });
     return result;
   };

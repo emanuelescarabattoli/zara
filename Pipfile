@@ -9,6 +9,8 @@ graphene-django = "*"
 django-environ = "*"
 "psycopg2-binary" = "*"
 django-cors-headers = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 django-admin = "*"
