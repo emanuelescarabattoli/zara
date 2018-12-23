@@ -15,7 +15,7 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
         <Route exact path="/login" component={Login} />
         <Route exact path="/demo" component={Demo} />
         <PrivateRoute exact path="/" component={Dashboard} />
@@ -26,7 +26,7 @@ class App extends Component {
         <PrivateRoute exact path="/totals" component={Totals} />
         <PrivateRoute exact path="/total" component={Total} />
         <PrivateRoute exact path="/total/:id" component={Total} />
-      </div>
+      </>
     );
   }
 }

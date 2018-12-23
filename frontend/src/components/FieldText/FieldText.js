@@ -9,6 +9,7 @@ const FieldText = props => {
         type={props.type ? props.type : "text"}
         value={props.value}
         onChange={props.onChange}
+        placeholder={props.helpText}
       />
       <small>{props.error && props.error.messages.join(", ")}</small>
     </div>

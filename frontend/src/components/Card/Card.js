@@ -16,4 +16,8 @@ export const CardBody = props => {
   return <div className="card-body">{props.children}</div>;
 };
 
+export const CardButtons = props => {
+  return <div className="card-buttons">{props.children}</div>;
+};
+
 export default Card;
