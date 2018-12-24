@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("app/", include("app.urls")),
-    path("accounts/", include("accounts.urls")),
+    path("app/", include("zara.app.urls")),
+    path("accounts/", include("zara.accounts.urls")),
     re_path(r"", views.frontend),
 ]

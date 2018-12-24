@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "graphene_django",
     "corsheaders",
-    "app.apps.AppConfig",
-    "accounts.apps.AccountsConfig",
+    "zara.app.apps.AppConfig",
+    "zara.accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "zara.urls"
+ROOT_URLCONF = "zara.zara.urls"
 
 TEMPLATES = [
     {
@@ -133,7 +133,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 WHITENOISE_ROOT = os.path.join(FRONTEND_DIR, 'build', 'root')
 
 # graphene setting
-GRAPHENE = {"SCHEMA": "app.schema.schema"}
+GRAPHENE = {"SCHEMA": "zara.app.schema.schema"}
 
 # after login redirect
 LOGIN_REDIRECT_URL = "/"
