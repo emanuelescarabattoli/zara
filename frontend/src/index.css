@@ -61,10 +61,6 @@ a {
 .title {
   margin: 0px;
   padding: 20px 30px 30px 30px;
-  font-weight: 600;
-  display: block;
-  color: #c6cfeb;
-  font-size: 1.2em;
 }
 
 .fa-spacing {
@@ -137,8 +133,7 @@ ul.menu li a:hover {
   border-bottom: solid 1px #444853;
 }
 
-
-.card > .card-buttons{
+.card > .card-buttons {
   margin: 0px;
   padding: 15px 20px;
   border-top: solid 1px #444853;
@@ -504,7 +499,7 @@ select:focus {
   cursor: pointer;
 }
 
-.login-container {
+.login-redirect {
   margin: 0px;
   padding: 0px;
   display: flex;
@@ -512,10 +507,4 @@ select:focus {
   justify-content: center;
   width: 100%;
   height: 100%;
-}
-
-.login {
-  margin: 0px;
-  padding: 0px;
-  width: 400px;
 }

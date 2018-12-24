@@ -20,7 +20,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
           {...rest}
           render={props => {
             if (error || data.me.userneme) {
-              return <Redirect to="/accounts/login" />;
+              return <Redirect to="login" />;
             }
             return <Component {...props} />;
           }}
