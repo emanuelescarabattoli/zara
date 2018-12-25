@@ -7,7 +7,7 @@ import { ApolloLink } from "apollo-link";
 import { defaults, resolvers } from "./resolvers";
 
 const link = createHttpLink({
-  uri: "http://localhost:8000/app/graphql",
+  uri: process.env.REACT_APP_BASE_URL + "/app/graphql",
   credentials: "include"
 });
 
