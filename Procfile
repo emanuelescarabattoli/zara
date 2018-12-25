@@ -1,1 +1,1 @@
-web: gunicorn zara.zara.wsgi:application
+web: gunicorn zara.zara.wsgi:application --chdir zara
