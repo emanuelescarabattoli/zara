@@ -76,7 +76,7 @@ const Detail = props => {
           <tfoot>
             <tr>
               <td colSpan={3} className="align-right">
-                <Total list={props.list || []} column="amount" />
+                <Total list={props.list} column="amount" />
               </td>
               <td colSpan={1} />
             </tr>
@@ -94,7 +94,7 @@ const Detail = props => {
             <FieldSelect
               name="counter"
               description="Counter"
-              value={props.rowDetail.counter}
+              value={props.rowDetail.counter.id}
               options={props.counterList}
               helpText="Counter"
               onChange={props.onChangeRow}

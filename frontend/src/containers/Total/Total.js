@@ -22,9 +22,9 @@ class Total extends Component {
 
     this.state = {
       id: 0,
-      detail: { title: "" },
+      detail: { title: "", totalrowSet: [] },
       errors: [],
-      rowDetail: { description: "", date: "", period: "", amount: "" },
+      rowDetail: { counter: { id: "", title: "" } },
       rowErrors: [],
       modalVisible: false
     };

@@ -508,3 +508,14 @@ select:focus {
   width: 100%;
   height: 100%;
 }
+
+.logout {
+  margin: 0px;
+  padding: 0px;
+  color: #b1bbdb;
+}
+
+.logout:hover,
+.logout:active {
+  color: #ffffff;
+}
