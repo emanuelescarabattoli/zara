@@ -50,7 +50,7 @@ const Detail = props => {
               <th>Date</th>
               <th>Period</th>
               <th className="align-right">Amount</th>
-              <th width="15%" />
+              <th width="60px" />
             </tr>
           </thead>
           <tbody>

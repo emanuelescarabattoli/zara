@@ -361,7 +361,7 @@ select:focus {
 }
 
 .grid .col-11 {
-  grid-column: span 12;
+  grid-column: span 11;
 }
 
 .grid .col-12 {
@@ -438,9 +438,14 @@ select:focus {
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.4);
 }
 
-.veritical-align-center {
+.vertical-align-center {
   display: flex;
   align-items: center;
+}
+
+.horizontal-align-center {
+  display: flex;
+  justify-content: center;
 }
 
 .total {

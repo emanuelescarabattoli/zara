@@ -11,7 +11,7 @@ const Total = props => {
         ? formatNumber(props.list[0][props.column])
         : formatNumber(
             props.list.reduce((total, item) =>
-              total[props.column] ? total[props.column] + item[props.column] : total + item[props.column]
+              total[props.column] !== undefined ? total[props.column] + item[props.column] : total + item[props.column]
             )
           )}{" "}
       &euro;

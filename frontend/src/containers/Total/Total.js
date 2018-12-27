@@ -91,7 +91,7 @@ class Total extends Component {
       return this.error(response);
     }
 
-    const detail = this.state.detail.totalrowSet.find(row => row.id === id);
+    const detail = this.state.detail.totalrowSet.find(row => row.counter.id === id);
 
     this.setState({ rowDetail: detail });
 
@@ -138,7 +138,17 @@ class Total extends Component {
     let result = [];
     this.state.detail.totalrowSet.map(totalRow => {
       const amount = totalRow.counter.counterrowSet.reduce((sum, value) => sum + value.amount, 0);
-      result.push({ ...totalRow, amount });
+      result.push({ id: totalRow.id, title: totalRow.counter.title, amount });
+      return null;
+    });
+    return result;
+  };
+
+  chartData = () => {
+    let result = [];
+    this.state.detail.totalrowSet.map(totalRow => {
+      const amount = totalRow.counter.counterrowSet.reduce((sum, value) => sum + value.amount, 0);
+      result.push({ name: totalRow.counter.title, value: Math.abs(amount) });
       return null;
     });
     return result;
@@ -168,6 +178,7 @@ class Total extends Component {
           clickDelete={this.clickDelete}
           buttonAddDisabled={this.buttonAddDisabled()}
           counterList={this.adaptCounterList()}
+          chartData={this.chartData()}
         />
       );
     }

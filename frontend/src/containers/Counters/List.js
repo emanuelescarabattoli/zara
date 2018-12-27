@@ -18,7 +18,7 @@ const List = props => {
             <tr>
               <th width="5%">Id</th>
               <th>Title</th>
-              <th width="15%" />
+              <th width="60px" />
             </tr>
           </thead>
           <tbody>
