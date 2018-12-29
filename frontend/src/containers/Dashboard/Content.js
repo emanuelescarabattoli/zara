@@ -18,7 +18,7 @@ const Content = props => {
                 </CardHeader>
                 <CardBody>
                   <div className="horizontal-align-center ">
-                    <PieChart width={250} height={250}>
+                    <PieChart width={300} height={300}>
                       <Pie data={item.data} dataKey="value" nameKey="name" cx="50%" cy="50%" fill="red">
                         {item.data.map((entry, index) => (
                           <Cell key={index} fill={COLORS[index % COLORS.length]} />

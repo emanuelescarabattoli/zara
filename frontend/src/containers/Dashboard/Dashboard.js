@@ -3,6 +3,7 @@ import { graphql, compose } from "react-apollo";
 
 import Page from "../../components/Page/Page";
 import { QUERY_LIST_TOTAL_WITH_COUNTERS } from "../../queries/index";
+import { formatNumber } from "../../utils/utils";
 import Content from "./Content";
 
 import "./Dashboard.css";
@@ -11,12 +12,15 @@ class Dashboard extends Component {
   adaptList = () => {
     let result = [];
     this.props.query.listTotal.map(total => {
-      let item = { title: total.title, data: [] };
+      let item = { title: "", data: [] };
+      let totalAmount = 0;
       total.totalrowSet.map(totalRow => {
         const amount = totalRow.counter.counterrowSet.reduce((sum, value) => sum + value.amount, 0);
-        item.data.push({ name: totalRow.counter.title, value: Math.abs(amount) });
+        item.data.push({ name: totalRow.counter.title + " (€ " + formatNumber(amount) + ")", value: Math.abs(amount) });
+        totalAmount += amount;
         return null;
       });
+      item.title = total.title + " (€ " + formatNumber(totalAmount) + ")"
       result.push(item);
       return null;
     });
