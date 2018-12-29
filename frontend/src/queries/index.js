@@ -203,3 +203,20 @@ export const MUTATION_DELETE_TOTAL_ROW = gql`
     }
   }
 `;
+
+export const QUERY_LIST_TOTAL_WITH_COUNTERS = gql`
+  {
+    listTotal {
+      title
+      totalrowSet {
+        counter {
+          title
+          counterrowSet {
+            description
+            amount
+          }
+        }
+      }
+    }
+  }
+`;

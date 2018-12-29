@@ -10,8 +10,7 @@ import Button from "../../components/Button/Button";
 import Delete from "../../components/Delete/Delete";
 import Total from "../../components/Total/Total";
 import Modal from "../../components/Modal/Modal";
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+import { COLORS } from "../../utils/utils";
 
 const Detail = props => {
   return (
