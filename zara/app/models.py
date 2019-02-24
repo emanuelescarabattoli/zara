@@ -50,21 +50,10 @@ class TotalRow(models.Model):
     counter = models.ForeignKey(Counter, on_delete=models.DO_NOTHING)
 
 
-class CounterHistory(models.Model):
+class TotalRowTotal(models.Model):
     """
-    a histyory of a counter
-    """
-
-    counter = models.ForeignKey(Counter, on_delete=models.DO_NOTHING)
-    date = models.DateField()
-    amount = models.DecimalField(max_digits=12, decimal_places=2)
-
-
-class TotalHistory(models.Model):
-    """
-    a histyory of a total
+    a row of total
     """
 
-    totlal = models.ForeignKey(Total, on_delete=models.DO_NOTHING)
-    date = models.DateField()
-    amount = models.DecimalField(max_digits=12, decimal_places=2)
+    total = models.ForeignKey(Total, on_delete=models.CASCADE, related_name="total")
+    total_row = models.ForeignKey(Total, on_delete=models.CASCADE, related_name="total_row")

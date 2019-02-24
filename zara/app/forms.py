@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Counter, CounterRow, Total, TotalRow
+from .models import Counter, CounterRow, Total, TotalRow, TotalRowTotal
 
 
 class CounterForm(forms.ModelForm):
@@ -41,3 +41,13 @@ class TotalRowForm(forms.ModelForm):
     class Meta:
         model = TotalRow
         fields = ("total", "counter")
+
+
+class TotalRowTotalForm(forms.ModelForm):
+    """
+    a form for counter model
+    """
+
+    class Meta:
+        model = TotalRowTotal
+        fields = ("total", "total_row")
